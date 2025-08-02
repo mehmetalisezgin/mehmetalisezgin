@@ -112,11 +112,7 @@ header {
 
 /* Hero section */
 .hero {
-    position: relative;
-    background-image: url('../images/hero-background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--primary-black); /* Arka plan sade siyah olur */
     padding: 100px 20px 80px;
     text-align: center;
     overflow: hidden;
@@ -407,4 +403,23 @@ footer {
     text-align: center;
     font-size: 0.9rem;
     color: var(--secondary-lightgreen);
+}
+.about-section {
+    padding: 60px 20px;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-photo img {
+    width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
