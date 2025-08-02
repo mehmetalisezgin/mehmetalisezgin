@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Personal Resume</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="logo">My Resume</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+        <nav class="menu" id="navMenu">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/experience}" class="active">Experience</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/tools}">Tools</a>
+            <a th:href="@{/contact}">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section>
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Senior Software Engineer</h3>
+                <h4>TechCorp &ndash; 2023&nbsp;&ndash;&nbsp;Present</h4>
+                <p>Leading a team of developers to design and implement microservice architectures.
+                    Introduced DevOps practices that reduced deployment time by 50% and improved system
+                    resilience.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Full‑Stack Developer</h3>
+                <h4>CodeWorks &ndash; 2020&nbsp;&ndash;&nbsp;2023</h4>
+                <p>Developed full‑stack web applications using Java, Spring Boot, React and PostgreSQL.
+                    Collaborated closely with designers and product managers to deliver user‑centric
+                    features. Mentored junior developers and conducted technical workshops.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Junior Developer</h3>
+                <h4>StartUp Labs &ndash; 2018&nbsp;&ndash;&nbsp;2020</h4>
+                <p>Contributed to the development of a SaaS platform by writing RESTful APIs and
+                    implementing responsive front‑end components. Gained hands‑on experience with agile
+                    methodologies and best coding practices.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 My Resume. All rights reserved.
+</footer>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById('navMenu');
+    menu.classList.toggle('show');
+}
+</script>
+</body>
+</html>

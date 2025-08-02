@@ -1,0 +1,410 @@
+/*
+ * Global styles for the personal resume site. Colours are defined using
+ * CSS variables so that the palette can easily be adjusted. The design
+ * embraces a dark theme using black as the primary background colour
+ * and orange (#f16b22) as the main accent, complemented by green (#6fb122),
+ * turquoise (#40e0d0) and a light green highlight (#a3eaa0). White is
+ * used for text to maintain strong contrast.
+ */
+
+:root {
+    --primary-black: #000000;
+    --primary-orange: #f16b22;
+    --secondary-green: #6fb122;
+    --secondary-turquoise: #40e0d0;
+    --secondary-lightgreen: #a3eaa0;
+    --white: #ffffff;
+    --gray-light: #2a2a2a;
+    --error: #ff4c4c;
+}
+
+/* Base resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: var(--primary-black);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary-turquoise);
+}
+
+header {
+    background-color: var(--primary-black);
+    border-bottom: 2px solid var(--primary-orange);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-orange);
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .menu a {
+    color: var(--white);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navbar .menu a:hover,
+.navbar .menu a.active {
+    background-color: var(--primary-orange);
+    color: var(--primary-black);
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-black);
+        border-top: 1px solid var(--gray-light);
+    }
+    .navbar .menu.show {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    background-image: url('../images/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 20px 80px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-orange);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--secondary-lightgreen);
+}
+
+/* Weather cards */
+.weather-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+.weather-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--primary-orange);
+}
+.weather-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.weather-card {
+    background-color: var(--gray-light);
+    border: 1px solid var(--primary-orange);
+    border-radius: 8px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.weather-card .city {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-orange);
+}
+.weather-card .temperature {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-green);
+    margin-bottom: 5px;
+}
+.weather-card .description {
+    font-size: 1rem;
+    color: var(--secondary-turquoise);
+    margin-bottom: 10px;
+}
+.weather-card .windspeed {
+    font-size: 0.9rem;
+    color: var(--secondary-lightgreen);
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-orange);
+    text-align: center;
+}
+
+/* About page */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.about-text {
+    flex: 1 1 400px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-lightgreen);
+}
+.about-image {
+    flex: 1 1 300px;
+}
+.about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Experience page */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 20px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--primary-orange);
+}
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 30px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-orange);
+}
+.timeline-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--secondary-green);
+}
+.timeline-item h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--secondary-turquoise);
+}
+.timeline-item p {
+    font-size: 0.95rem;
+    color: var(--secondary-lightgreen);
+}
+
+/* Projects page */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+.project-card {
+    background-color: var(--gray-light);
+    border: 1px solid var(--primary-orange);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--secondary-green);
+}
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--secondary-lightgreen);
+    flex-grow: 1;
+}
+.project-card a {
+    align-self: flex-start;
+    background-color: var(--primary-orange);
+    color: var(--primary-black);
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+.project-card a:hover {
+    background-color: var(--secondary-turquoise);
+}
+
+/* Tools page */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.tool-item {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid var(--primary-orange);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.tool-item i {
+    font-size: 2.5rem;
+    color: var(--secondary-green);
+    margin-bottom: 10px;
+}
+.tool-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-lightgreen);
+}
+
+/* Contact form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary-turquoise);
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--primary-orange);
+    border-radius: 4px;
+    background-color: var(--gray-light);
+    color: var(--white);
+    resize: vertical;
+    font-size: 1rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-turquoise);
+}
+.contact-form button {
+    background-color: var(--primary-orange);
+    color: var(--primary-black);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.contact-form button:hover {
+    background-color: var(--secondary-turquoise);
+}
+.error {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+.success-message {
+    background-color: var(--secondary-green);
+    color: var(--primary-black);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: var(--primary-black);
+    border-top: 1px solid var(--gray-light);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--secondary-lightgreen);
+}

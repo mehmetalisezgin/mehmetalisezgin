@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Personal Resume</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="logo">My Resume</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+        <nav class="menu" id="navMenu">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/about}" class="active">About</a>
+            <a th:href="@{/experience}">Experience</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/tools}">Tools</a>
+            <a th:href="@{/contact}">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Page Hero with custom background -->
+    <section class="hero" style="background-image: url('../images/about-background.png');">
+        <div class="hero-content">
+            <h1>About Me</h1>
+            <p>Get to know the person behind the code.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Hello! I'm a dedicated full‑stack developer with a passion for turning ideas into elegant
+                    applications. Over the last several years, I've worked on projects ranging from small
+                    websites to complex enterprise systems. I enjoy the challenge of solving problems and
+                    continuously learning new technologies.
+                </p>
+                <p>
+                    My core strengths include back‑end development with Java &amp; Spring Boot, and crafting
+                    engaging user interfaces with HTML, CSS and modern JavaScript. When I'm not coding, you
+                    can find me exploring the latest tech trends, contributing to open source, or hiking in
+                    nature.
+                </p>
+                <p>
+                    I'm always excited to collaborate on meaningful projects. Feel free to explore my
+                    experience and projects, and don't hesitate to reach out if you'd like to connect.
+                </p>
+                <div style="margin-top:20px;">
+                    <a href="https://github.com/" target="_blank" style="margin-right:15px;">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                    <a href="https://linkedin.com/" target="_blank">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="../images/about-background.png" alt="About" />
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 My Resume. All rights reserved.
+</footer>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById('navMenu');
+    menu.classList.toggle('show');
+}
+</script>
+</body>
+</html>
