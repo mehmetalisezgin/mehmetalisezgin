@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Personal Resume</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="logo">My Resume</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+        <nav class="menu" id="navMenu">
+            <a th:href="@{/}" class="active">Home</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/experience}">Experience</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/tools}">Tools</a>
+            <a th:href="@{/contact}">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome!</h1>
+            <p th:text="${aboutSnippet}">Passionate full‑stack developer with expertise...</p>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section class="weather-section">
+        <h2>Current Weather in Turkey's Top Cities</h2>
+        <div class="weather-container">
+            <div th:each="w : ${weatherList}" class="weather-card">
+                <div class="city" th:text="${w.city}">City</div>
+                <div class="temperature" th:text="${#numbers.formatDecimal(w.temperature, 0, 'POINT', 1, 'POINT')} + '°C'">25°C</div>
+                <div class="description" th:text="${w.description}">Clear sky</div>
+                <div class="windspeed" th:text="'Wind: ' + ${#numbers.formatDecimal(w.windspeed, 0, 'POINT', 1, 'POINT')} + ' km/h'">Wind: 5 km/h</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 My Resume. All rights reserved.
+</footer>
+
+<!-- Mobile menu toggling script -->
+<script>
+function toggleMenu() {
+    var menu = document.getElementById('navMenu');
+    if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+    } else {
+        menu.classList.add('show');
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Personal Resume</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="logo">My Resume</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+        <nav class="menu" id="navMenu">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/experience}">Experience</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/tools}">Tools</a>
+            <a th:href="@{/contact}" class="active">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section>
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+            <!-- Success message displayed after form submission -->
+            <div th:if="${successMessage}" class="success-message" th:text="${successMessage}">Your message has been sent successfully!</div>
+            <form th:action="@{/contact}" th:object="${contactForm}" method="post">
+                <label for="name">Name</label>
+                <input id="name" type="text" th:field="*{name}" placeholder="Your name" />
+                <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" th:field="*{email}" placeholder="Your email" />
+                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="6" th:field="*{message}" placeholder="Your message"></textarea>
+                <div class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 My Resume. All rights reserved.
+</footer>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById('navMenu');
+    menu.classList.toggle('show');
+}
+</script>
+</body>
+</html>
