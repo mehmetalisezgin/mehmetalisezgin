@@ -419,7 +419,10 @@ footer {
 }
 
 .about-photo img {
-    width: 280px;
+    max-width: 100%;
+    width: 260px;
+    height: auto;
     border-radius: 12px;
+    object-fit: cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
